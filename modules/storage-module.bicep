@@ -1,11 +1,8 @@
 param location string = resourceGroup().location
-param storageAccountNames array = [
-  'Beltranfinalexam1'
-  'Beltranfinalexam2'
-]
+param storageAccountName string = 'beltran-valle-asp-retakeexam1 '
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = [for name in storageAccountNames: {
-  name: name
+resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = {
+  name: storageAccountName
   location: location
   sku: {
     name: 'Standard_LRS'
@@ -14,4 +11,4 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' = [for na
   properties: {
     accessTier: 'Hot'
   }
-}]
+}
